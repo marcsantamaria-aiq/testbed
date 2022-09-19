@@ -8,7 +8,7 @@ $agent_url = $installer_info.url
 $outfilename = "C:\Windows\Temp\firedrill_agent.zip"
 Invoke-RestMethod $agent_url -Headers $headers -OutFile $outfilename
 $ai_install_dir="C:\Windows\Temp\ai_install"
-Remove-Item $ai_install_dir -Recurse
+Remove-Item $ai_install_dir -Recurse -ErrorAction SilentlyContinue
 Expand-Archive -LiteralPath "C:\Windows\Temp\firedrill_agent.zip" -DestinationPath $ai_install_dir
 $agent_token_ep="$fd_url/v1/users/agent_token"
 $response = Invoke-RestMethod $agent_token_ep -Headers $headers
