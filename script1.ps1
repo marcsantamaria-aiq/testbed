@@ -16,7 +16,7 @@ $agent_token =  $response.token
 $fd_url = $fd_url.ToLower() -replace 'https://',''
 $arguments = "/S /AiInstDir=`"C:\Program Files\AttackIQ\FiredrillAgent\`" /ConsoleServerAddress=`"$fd_url`" /ConsoleServerPort=`"443`" /UseHttps=`"1`" /AuthenticationToken=`"$agent_token`" /ProxyHttpScheme=`"http://`" /ProxyHttpsScheme=`"http://`" /AuthToken=`"$agent_token`" /PlatformAddress=`"$fd_url`" /PlatformPort=`"443`" "
 Start-Process $ai_install_dir\*.exe -ArgumentList $arguments
-Start-Sleep -Seconds 30
+Start-Sleep -Seconds 60
 $service = Get-Service -Name "AttackIQ Testpoint Execute Service" -ErrorAction SilentlyContinue
 if ($service.Length -gt 0) {
   exit 0
